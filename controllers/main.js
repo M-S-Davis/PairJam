@@ -1,7 +1,11 @@
 module.exports = {
   getLanding: (req, res) => {
-    console.log("Loading landing page");
-    res.render("landing.ejs");
+    try {
+      console.log("Loading Landing page");
+      res.render("landing.ejs");
+    } catch (err) {
+      console.error(err);
+    }
   },
   getAbout: (req, res) => {
     console.log("Loading About page");

@@ -18,8 +18,10 @@ dotenv.config({ path: "./config/.env" });
 app.set("view engine", "ejs");
 
 // Static files
-app.use(express.static(__dirname + "/views"));
 app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/views"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(logger("dev"));
 
 app.use("/", mainRoutes);
