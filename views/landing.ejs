@@ -1,6 +1,14 @@
-<%- include('./partials/header.ejs') %>
-<%- include('./partials/navbar.ejs') %>
+<%- include('partials/header.ejs') %>
+<!-- <%- include('partials/navbar.ejs') %> -->
 
-<h1>Landing Page</h1>
+<main class="container valign-wrapper">
+  <div class="valign-wrapper center-align">
+    <img class="z-depth-3" src="/assets/pear-svgrepo-com.svg" alt="PairJam" />
+  </div>
+  <div class="valign-wrapper center-align">
+    <a href="/login" class="btn btn-primary"> Login</a>
+    <a href="/signup" class="btn btn-primary"> Signup</a>
+  </div>
+</main>
 
-<%- include('./partials/footer.ejs') %>
+<%- include('partials/footer.ejs') %>
