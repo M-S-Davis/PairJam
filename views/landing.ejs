@@ -1,13 +1,25 @@
 <%- include('partials/header.ejs') %>
-<!-- <%- include('partials/navbar.ejs') %> -->
 
-<main class="container valign-wrapper">
-  <div class="valign-wrapper center-align">
-    <img class="z-depth-3" src="/assets/pear-svgrepo-com.svg" alt="PairJam" />
+<nav>
+  <div class="nav-wrapper lime lighten-4">
+    <a href="#" class="brand-logo black-text center">PairJam</a>
   </div>
-  <div class="valign-wrapper center-align">
-    <a href="/login" class="btn btn-primary"> Login</a>
-    <a href="/signup" class="btn btn-primary"> Signup</a>
+</nav>
+
+<main class="container login-container">
+  <div class="card">
+    <div class="card-content">
+      <h3><i class="fa-solid fa-guitar"></i></h3>
+      <div class="section">
+        <p class="lead">Get your jams ready!</p>
+      </div>
+      <div class="divider"></div>
+      <div class="section">
+        <a href="/auth/google" class="btn blue darken-1">
+          <i class="fab fa-google left"></i> Log In With Google
+        </a>
+      </div>
+    </div>
   </div>
 </main>
 
