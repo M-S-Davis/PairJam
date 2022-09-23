@@ -6,6 +6,7 @@ const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const logger = require("morgan");
+const bodyParser = require("body-parser");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const authRoutes = require("./routes/auth");
@@ -30,6 +31,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "views")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Dev Helpers
 if (process.env.NODE_ENV === "development") {
   app.use(logger("dev"));
 }

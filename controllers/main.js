@@ -7,8 +7,12 @@ module.exports = {
       console.error(err);
     }
   },
-  getAbout: async (req, res) => {
-    console.log("Loading About page");
-    res.render("about.ejs", { title: "What's all this about?" });
+  getTest: async (req, res) => {
+    try {
+      console.log(req.user);
+      return res.redirect("/dashboard");
+    } catch (err) {
+      console.error(err);
+    }
   },
 };
