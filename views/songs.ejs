@@ -2,7 +2,7 @@
 
 <div class="container">
   <!-- Add song form -->
-  <div id="addSong" class="addsong row hide">
+  <div id="addsong" class="addsong row hide">
     <div class="card">
       <form class="col s12" action="/songs/addSong" method="POST">
         <!-- Artist name -->
@@ -69,10 +69,10 @@
   </div>
 
   <!-- Display addsong button -->
-  <div class="addsong-btn-container row">
+  <div class="addsong-btn-container row" onclick="toggleHide()">
     <a
       class="addsong-btn btn-floating top right btn-large waves-effect waves-light teal"
-      onclick="toggleAddSong()"
+      onclick="toggleHide()"
       ><i class="material-icons">add</i></a
     >
   </div>

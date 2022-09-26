@@ -9,10 +9,11 @@
       var instances = M.Materialbox.init(elems, options);
     });
 
-    document.addEventListener('addsong', function() {
-      var elems = document.getElementById('addsong')
+    function toggleHide() {
+      let elems = documnet.querySelectorAll('.addsong');
       elems.classList.toggle('hide');
-    });
+    }
+
 
     // Adds modal functionality
     // document.addEventListener('DOMContentLoaded', function() {
