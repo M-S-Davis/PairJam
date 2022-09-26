@@ -11,8 +11,4 @@ router.get("/", ensureAuth, dashboardController.getDashboard);
 //  @route  GET /dashboard/friends
 router.get("/friends", ensureAuth, dashboardController.getFriends);
 
-//  @desc   Display the songs page
-//  @route  GET /dashboard/songs
-router.get("/songs", ensureAuth, dashboardController.getSongs);
-
 module.exports = router;

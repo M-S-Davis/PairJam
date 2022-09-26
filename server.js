@@ -11,6 +11,7 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const authRoutes = require("./routes/auth");
 const dashboardRoutes = require("./routes/dashboard");
+const songsRoutes = require("./routes/songs");
 
 const PORT = process.env.PORT || 5000;
 
@@ -55,6 +56,7 @@ app.use(passport.session());
 app.use("/", mainRoutes);
 app.use("/auth", authRoutes);
 app.use("/dashboard", dashboardRoutes);
+app.use("/songs", songsRoutes);
 
 // Starting server
 app.listen(
