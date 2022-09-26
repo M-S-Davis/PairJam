@@ -1,54 +1,100 @@
 <%- include('partials/_header.ejs') %> <%- include('partials/_navbar.ejs') %>
 
-<div class="row">
-  <form class="col s12" action="/songs/addSong" method="POST">
-    <!-- Artist name -->
-    <div class="row">
-      <div class="input-field col s6">
-        <i class="material-icons prefix">account_circle</i>
-        <input id="artistName" type="text" class="validate" />
-        <label for="artistName">Artist</label>
-      </div>
+<div class="container">
+  <!-- Add song form -->
+  <div id="addsong" class="addsong row hide">
+    <div class="card">
+      <form class="col s12" action="/songs/addSong" method="POST">
+        <!-- Artist name -->
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input
+              type="text"
+              id="artistName"
+              name="artistName"
+              class="validate"
+            />
+            <label for="artistName">Artist</label>
+          </div>
 
-      <!-- Song name -->
-      <div class="input-field col s6">
-        <i class="material-icons prefix">music_note</i>
-        <input id="songName" type="text" class="validate" />
-        <label for="songName">Song Title</label>
-      </div>
+          <!-- Song name -->
+          <div class="input-field col s6">
+            <i class="material-icons prefix">music_note</i>
+            <input type="text" id="songName" name="songName" class="validate" />
+            <label for="songName">Song Title</label>
+          </div>
+        </div>
+
+        <!-- Album image URL -->
+        <div class="row">
+          <div class="input-field col s6">
+            <i class="material-icons prefix">album</i>
+            <input id="image" name="image" type="url" />
+            <label for="image">Album Image URL</label>
+          </div>
+
+          <!-- YouTube URL -->
+          <div class="input-field col s6">
+            <i class="material-icons prefix">video_library</i>
+            <input id="videoLink" name="videoLink" type="url" />
+            <label for="videoLink">YouTube Link URL</label>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="input-field col s12">
+          <i class="material-icons prefix">comment</i>
+          <textarea
+            id="note"
+            name="note"
+            class="materialize-textarea"
+          ></textarea>
+          <label for="note">Notes</label>
+        </div>
+
+        <!-- Submit button -->
+        <div class="row">
+          <button
+            class="btn waves-effect waves-light"
+            type="submit"
+            name="action"
+          >
+            Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <!-- Album image URL -->
-    <div class="row">
-      <div class="input-field col s6">
-        <i class="material-icons prefix">album</i>
-        <input id="image" type="text" />
-        <label for="image">Album Image URL</label>
-      </div>
+  <!-- Display addsong button -->
+  <div class="addsong-btn-container row" onclick="toggleHide()">
+    <a
+      class="addsong-btn btn-floating top right btn-large waves-effect waves-light teal"
+      onclick="toggleHide()"
+      ><i class="material-icons">add</i></a
+    >
+  </div>
 
-      <!-- YouTube URL -->
-      <div class="input-field col s6">
-        <i class="material-icons prefix">video_library</i>
-        <input id="videoLink" type="text" />
-        <label for="videoLink">YouTube Link URL</label>
-      </div>
+  <!-- Display Songs -->
+  <h1>Song Lists</h1>
+  <div class="song-list-conatiner">
+    <div class="container card hoverable">
+      <ul class="collection s6">
+        <% for(var i=0; i < songs.length; i++) { %>
+        <li class="collection-item avatar">
+          <img src="<%= songs[i].image%>" alt="" class="circle" />
+          <span class="title truncate"><%= songs[i].songName %></span>
+          <p class="truncate"><%= songs[i].artistName %></p>
+          <p class="truncate"><%= songs[i].note %></p>
+          <a href="#!" class="secondary-content"
+            ><i class="material-icons">grade</i></a
+          >
+        </li>
+        <% } %>
+      </ul>
     </div>
-
-    <!-- Notes -->
-    <div class="input-field col s12">
-      <i class="material-icons prefix">comment</i>
-      <textarea id="note" class="materialize-textarea"></textarea>
-      <label for="note">Notes</label>
-    </div>
-
-    <!-- Submit button -->
-    <div class="row">
-      <button class="btn waves-effect waves-light" type="submit" name="action">
-        Submit
-        <i class="material-icons right">send</i>
-      </button>
-    </div>
-  </form>
+  </div>
 </div>
-
 <%- include('partials/_footer.ejs') %>

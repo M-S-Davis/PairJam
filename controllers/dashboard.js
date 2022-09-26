@@ -17,12 +17,4 @@ module.exports = {
       console.error(err);
     }
   },
-  getSongs: async (req, res) => {
-    console.log("I did a song thing!");
-    try {
-      res.render("songs.ejs", { title: "Songs" });
-    } catch (err) {
-      console.error(err);
-    }
-  },
 };

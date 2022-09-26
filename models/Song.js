@@ -15,7 +15,8 @@ const SongSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    default: "http://clipart-library.com/images/qTBoKLAAc.png",
+    default:
+      "https://image.shutterstock.com/image-vector/vinil-record-glitter-yellow-color-600w-1386485138.jpg",
   },
   videoLink: {
     type: String,
@@ -29,4 +30,4 @@ const SongSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Song", SongSchema);

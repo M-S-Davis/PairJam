@@ -9,6 +9,12 @@
       var instances = M.Materialbox.init(elems, options);
     });
 
+    function toggleHide() {
+      let elems = documnet.querySelectorAll('.addsong');
+      elems.classList.toggle('hide');
+    }
+
+
     // Adds modal functionality
     // document.addEventListener('DOMContentLoaded', function() {
     //   var elems = document.querySelectorAll('.modal');
