@@ -1,80 +1,92 @@
 <%- include('partials/_header.ejs') %> <%- include('partials/_navbar.ejs') %>
 
 <div class="container">
-  <!-- Add song form -->
-  <div id="addsong" class="addsong row hide">
-    <div class="card">
-      <form class="col s12" action="/songs/addSong" method="POST">
-        <!-- Artist name -->
-        <div class="row">
-          <div class="input-field col s6">
-            <i class="material-icons prefix">account_circle</i>
-            <input
-              type="text"
-              id="artistName"
-              name="artistName"
-              class="validate"
-            />
-            <label for="artistName">Artist</label>
-          </div>
+  <!-- Modal Trigger -->
+  <a
+    class="waves-effect right waves-light btn-floating modal-trigger"
+    href="#addsong"
+    ><i class="material-icons">add</i></a
+  >
+  <!-- Add song popup -->
+  <div id="addsong" class="modal">
+    <div class="modal-content">
+      <!-- Add song form -->
+      <div class="row">
+        <div class="card">
+          <form class="col s12" action="/songs/addSong" method="POST">
+            <!-- Artist name -->
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input
+                  type="text"
+                  id="artistName"
+                  name="artistName"
+                  class="validate"
+                />
+                <label for="artistName">Artist</label>
+              </div>
 
-          <!-- Song name -->
-          <div class="input-field col s6">
-            <i class="material-icons prefix">music_note</i>
-            <input type="text" id="songName" name="songName" class="validate" />
-            <label for="songName">Song Title</label>
-          </div>
+              <!-- Song name -->
+              <div class="input-field col s6">
+                <i class="material-icons prefix">music_note</i>
+                <input
+                  type="text"
+                  id="songName"
+                  name="songName"
+                  class="validate"
+                />
+                <label for="songName">Song Title</label>
+              </div>
+            </div>
+
+            <!-- Album image URL -->
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">album</i>
+                <input id="image" name="image" type="url" />
+                <label for="image">Album Image URL</label>
+              </div>
+
+              <!-- YouTube URL -->
+              <div class="input-field col s6">
+                <i class="material-icons prefix">video_library</i>
+                <input id="videoLink" name="videoLink" type="url" />
+                <label for="videoLink">YouTube Link URL</label>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="input-field col s12">
+              <i class="material-icons prefix">comment</i>
+              <textarea
+                id="note"
+                name="note"
+                class="materialize-textarea"
+              ></textarea>
+              <label for="note">Notes</label>
+            </div>
+
+            <!-- Submit button -->
+            <div class="row">
+              <button
+                class="btn waves-effect waves-light"
+                type="submit"
+                name="action"
+              >
+                Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </form>
         </div>
-
-        <!-- Album image URL -->
-        <div class="row">
-          <div class="input-field col s6">
-            <i class="material-icons prefix">album</i>
-            <input id="image" name="image" type="url" />
-            <label for="image">Album Image URL</label>
-          </div>
-
-          <!-- YouTube URL -->
-          <div class="input-field col s6">
-            <i class="material-icons prefix">video_library</i>
-            <input id="videoLink" name="videoLink" type="url" />
-            <label for="videoLink">YouTube Link URL</label>
-          </div>
-        </div>
-
-        <!-- Notes -->
-        <div class="input-field col s12">
-          <i class="material-icons prefix">comment</i>
-          <textarea
-            id="note"
-            name="note"
-            class="materialize-textarea"
-          ></textarea>
-          <label for="note">Notes</label>
-        </div>
-
-        <!-- Submit button -->
-        <div class="row">
-          <button
-            class="btn waves-effect waves-light"
-            type="submit"
-            name="action"
-          >
-            Submit
-            <i class="material-icons right">send</i>
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
-
-  <!-- Display addsong button -->
-  <div class="addsong-btn-container row" onclick="toggleHide()">
-    <a
-      class="addsong-btn btn-floating top right btn-large waves-effect waves-light teal"
-      onclick="toggleHide()"
-      ><i class="material-icons">add</i></a
-    >
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+        >Close</a
+      >
+    </div>
   </div>
 
   <!-- Display Songs -->
@@ -88,9 +100,24 @@
           <span class="title truncate"><%= songs[i].songName %></span>
           <p class="truncate"><%= songs[i].artistName %></p>
           <p class="truncate"><%= songs[i].note %></p>
-          <a href="#!" class="secondary-content"
-            ><i class="material-icons">grade</i></a
+
+          <!-- If user created this song, display additonal content -->
+          <% if(songs[i].googleId == user.googleId) { %>
+          <a
+            href="/songs/editSong/<%=songs[i]._id%>"
+            class="right secondary-content"
+            ><i class="material-icons">edit</i></a
           >
+          <form
+            action="/songs/deleteSong/<%=songs[i]._id%>?_method=DELETE"
+            method="POST"
+          >
+            <input type="hidden" name="_method" value="DELETE" />
+            <button class="btn right" method="POST">
+              <i class="material-icons">delete</i>
+            </button>
+          </form>
+          <% } %>
         </li>
         <% } %>
       </ul>

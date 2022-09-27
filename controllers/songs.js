@@ -2,10 +2,9 @@ const Song = require("../models/Song");
 
 module.exports = {
   getSongs: async (req, res) => {
-    console.log("We made it to the song page controller");
     try {
       const songs = await Song.find().sort({ createdAt: "desc" });
-      res.render("songs.ejs", { title: "Songs", songs: songs });
+      res.render("songs.ejs", { title: "Songs", songs: songs, user: req.user });
     } catch (err) {
       console.error(err);
     }
@@ -13,7 +12,7 @@ module.exports = {
   addSong: async (req, res) => {
     try {
       await Song.create({
-        googleId: req.user.id,
+        googleId: req.user.googleId,
         artistName: req.body.artistName,
         songName: req.body.songName,
         image: req.body.image,
@@ -23,6 +22,48 @@ module.exports = {
       res.redirect("/songs");
     } catch (err) {
       console.error(err);
+    }
+  },
+  editSong: async (req, res) => {
+    const selectedSong = await Song.find({ _id: req.params.id });
+    try {
+      res.render("editsong.ejs", {
+        title: "Edit Song",
+        song: selectedSong,
+        user: req.user,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  putSong: async (req, res) => {
+    const selectedSong = await Song.find({ _id: req.params.id });
+    try {
+      //todo: validate input
+      await Song.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          artistName: req.body.artistName,
+          songName: req.body.songName,
+          image: req.body.image,
+          videoLink: req.body.videoLink,
+          note: req.body.note,
+        }
+      );
+      console.log(`Song ${req.body.songName} was updated.`);
+      res.redirect("/songs");
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  deleteSong: async (req, res) => {
+    try {
+      await Song.remove({ _id: req.params.id });
+      console.log("Deleted song.");
+      res.redirect("/songs");
+    } catch (err) {
+      console.error(err);
+      res.redirect("/songs");
     }
   },
 };

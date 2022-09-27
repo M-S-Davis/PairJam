@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const methodOverride = require("method-override");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const connectDB = require("./config/database");
@@ -30,6 +31,8 @@ app.set("view engine", "ejs");
 // Static files
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "views")));
+
+//Body parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -37,6 +40,9 @@ app.use(express.json());
 if (process.env.NODE_ENV === "development") {
   app.use(logger("dev"));
 }
+
+//Use forms for put / delete
+app.use(methodOverride("_method"));
 
 // Sessions
 app.use(
