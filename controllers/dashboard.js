@@ -9,12 +9,4 @@ module.exports = {
       console.error(err);
     }
   },
-  getFriends: async (req, res) => {
-    console.log("I made a friend!");
-    try {
-      res.render("friends.ejs", { title: "Friends" });
-    } catch (err) {
-      console.error(err);
-    }
-  },
 };

@@ -13,6 +13,7 @@ const mainRoutes = require("./routes/main");
 const authRoutes = require("./routes/auth");
 const dashboardRoutes = require("./routes/dashboard");
 const songsRoutes = require("./routes/songs");
+const bandsRoutes = require("./routes/bands");
 
 const PORT = process.env.PORT || 5000;
 
@@ -63,6 +64,7 @@ app.use("/", mainRoutes);
 app.use("/auth", authRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/songs", songsRoutes);
+app.use("/bands", bandsRoutes);
 
 // Starting server
 app.listen(
