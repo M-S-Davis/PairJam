@@ -23,7 +23,9 @@
         </li>
         <li>
           <p>Members: <%= bands[i].bandMembers.length %></p>
-          <%- include('partials/_user_chip.ejs')  %> 
+          <% for ( let j = 0; j < bands[i].bandMembers[j]) { %> 
+            <%- include('partials/_user_chip.ejs')  %> 
+          <% } %>
         </li>
       </ul>
     </div>
