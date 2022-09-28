@@ -1,0 +1,96 @@
+<%- include('partials/_header.ejs') %> 
+<%- include('partials/_navbar.ejs') %>
+
+<h1 class="center">Welcome to band camp!</h1>
+
+<!-- Modal Trigger -->
+<a
+  class="waves-effect right waves-light btn-floating modal-trigger"
+  href="#addBand"
+  ><i class="material-icons">add</i></a
+>
+
+<div class="container">
+  <!-- Display Bands -->
+  <h1 class="center">Bands you're in!</h1>
+  <div class="band-list-conatiner">
+    <% for(var i=0; i < bands.length; i++) { %>
+    <div class="container card hoverable">
+      <ul class="collection s6">
+        <li class="collection-item avatar">
+          <img src="<%= bands[i].logo %>" alt="" class="circle" />
+          <span class="title truncate"><%= bands[i].bandName %></span>
+        </li>
+        <li>
+          <p>Members: <%= bands[i].bandMembers.length %></p>
+          <%- include('partials/_user_chip.ejs')  %> 
+        </li>
+      </ul>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<!-- Band popup -->
+<div id="addBand" class="modal">
+  <div class="modal-content">
+    <h2>Edit Band</h2>
+    <div class="row">
+      <div class="card">
+        <form class="col s12" action="/bands/addBand" method="POST">
+          <!-- Band name -->
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input
+                type="text"
+                id="bandName"
+                name="bandName"
+                class="validate"
+              />
+              <label for="artistName">Band Name</label>
+            </div>
+
+          <!-- Band logo URL -->
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">album</i>
+              <input id="logo" name="logo" type="url" />
+              <label for="logo">Band logo URL</label>
+            </div>
+
+          <!-- bandDesc -->
+          <div class="input-field col s12">
+            <i class="material-icons prefix">comment</i>
+            <textarea
+              id="bandDesc"
+              name="bandDesc"
+              class="materialize-textarea"
+            ></textarea>
+            <label for="note">About</label>
+          </div>
+
+          <!-- Submit button -->
+          <div class="row">
+            <button
+              class="btn waves-effect waves-light"
+              type="submit"
+              name="action"
+            >
+              Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+      >Close</a
+    >
+  </div>
+</div>
+
+
+<%- include('partials/_footer.ejs') %>

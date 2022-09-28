@@ -4,7 +4,6 @@ const UserSchema = new mongoose.Schema({
   googleId: {
     type: String,
     required: true,
-    unique: true,
   },
   displayName: {
     type: String,
@@ -21,11 +20,6 @@ const UserSchema = new mongoose.Schema({
   image: {
     type: String,
   },
-  groups: [
-    {
-      type: String,
-    },
-  ],
   createdAt: {
     type: Date,
     default: Date.now,

@@ -1,21 +1,20 @@
 const mongoose = require("mongoose");
-const Song = require("./Song");
 
-const GroupSchema = new mongoose.Schema({
+const BandSchema = new mongoose.Schema({
   // Owner of the group set by googleId
-  googleId: {
+  createdByGoogleId: {
     type: String,
     required: true,
   },
-  groupName: {
+  bandName: {
     type: String,
     required: true,
   },
-  groupMembers: [
+  bandMembers: [
     {
-      user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+      googleId: {
+        type: String,
+        required: true,
       },
     },
   ],
@@ -29,18 +28,13 @@ const GroupSchema = new mongoose.Schema({
     type: String,
     default: "https://www.svgrepo.com/show/156473/pear.svg",
   },
-  groupDesc: {
+  bandDesc: {
     type: String,
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
 });
 
-module.exports = mongoose.model("Group", GroupSchema);
+module.exports = mongoose.model("Band", BandSchema);

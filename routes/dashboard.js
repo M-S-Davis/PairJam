@@ -7,8 +7,4 @@ const dashboardController = require("../controllers/dashboard");
 //  @route  GET /dashboard/
 router.get("/", ensureAuth, dashboardController.getDashboard);
 
-//  @desc   Display the friends page
-//  @route  GET /dashboard/friends
-router.get("/friends", ensureAuth, dashboardController.getFriends);
-
 module.exports = router;

@@ -12,7 +12,7 @@ module.exports = {
   addSong: async (req, res) => {
     try {
       await Song.create({
-        googleId: req.user.googleId,
+        createdByGoogleId: req.user.googleId,
         artistName: req.body.artistName,
         songName: req.body.songName,
         image: req.body.image,
@@ -37,7 +37,6 @@ module.exports = {
     }
   },
   putSong: async (req, res) => {
-    const selectedSong = await Song.find({ _id: req.params.id });
     try {
       //todo: validate input
       await Song.findOneAndUpdate(

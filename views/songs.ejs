@@ -90,11 +90,16 @@
   </div>
 
   <!-- Display Songs -->
-  <h1>Song Lists</h1>
+  <% if (songs.length > 0) { %>
+  <h1 class="center">Song Lists</h1>
+  <% } else { %>
+  <h1>Add songs with the add button.</h1>
+  <% } %>
+
   <div class="song-list-conatiner">
+    <% for(var i=0; i < songs.length; i++) { %>
     <div class="container card hoverable">
       <ul class="collection s6">
-        <% for(var i=0; i < songs.length; i++) { %>
         <li class="collection-item avatar">
           <img src="<%= songs[i].image%>" alt="" class="circle" />
           <span class="title truncate"><%= songs[i].songName %></span>
@@ -102,7 +107,7 @@
           <p class="truncate"><%= songs[i].note %></p>
 
           <!-- If user created this song, display additonal content -->
-          <% if(songs[i].googleId == user.googleId) { %>
+          <% if(songs[i].createdByGoogleId == user.googleId) { %>
           <a
             href="/songs/editSong/<%=songs[i]._id%>"
             class="right secondary-content"
@@ -119,9 +124,9 @@
           </form>
           <% } %>
         </li>
-        <% } %>
       </ul>
     </div>
+    <% } %>
   </div>
 </div>
 <%- include('partials/_footer.ejs') %>
