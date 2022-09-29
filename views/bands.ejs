@@ -14,19 +14,17 @@
   <!-- Display Bands -->
   <h1 class="center">Bands you're in!</h1>
   <div class="band-list-conatiner">
-    <% for(var i=0; i < bands.length; i++) { %>
+    <% for (let i=0; i < bands.length; i++) { %>
     <div class="container card hoverable">
       <ul class="collection s6">
+        <a href="/bands/<%= bands[i].id %>">
         <li class="collection-item avatar">
           <img src="<%= bands[i].logo %>" alt="" class="circle" />
           <span class="title truncate"><%= bands[i].bandName %></span>
-        </li>
-        <li>
           <p>Members: <%= bands[i].bandMembers.length %></p>
-          <% for ( let j = 0; j < bands[i].bandMembers[j]) { %> 
-            <%- include('partials/_user_chip.ejs')  %> 
-          <% } %>
+          <!-- todo: add band member chips -->
         </li>
+      </a>
       </ul>
     </div>
     <% } %>
