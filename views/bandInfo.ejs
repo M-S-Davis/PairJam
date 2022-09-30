@@ -1,0 +1,73 @@
+<%- include('partials/_header.ejs') %> <%- include('partials/_navbar.ejs') %>
+<main>
+  <!-- Band General Info -->
+  <h1 class="center">Welcome to <%= band.bandName %></h1>
+  <div class="container">
+    <img class="responsive-img circle" src="<%=band.logo%>" alt="" />
+    <div class="card grey">
+      <h2>About us</h2>
+      <p><%= band.bandDesc %></p>
+    </div>
+    <div class="container">
+      <% if(band.createdByGoogleId == user.googleId) { %>
+      <a href="/bands/editBand/<%=band._id%>" class="right secondary-content"
+        ><i class="material-icons">edit</i></a
+      >
+      <form
+        action="/bands/deleteBand/<%=band._id%>?_method=DELETE"
+        method="POST"
+      >
+        <input type="hidden" name="_method" value="DELETE" />
+        <button class="btn right" method="POST">
+          <i class="material-icons">delete</i>
+        </button>
+      </form>
+      <% } %>
+    </div>
+  </div>
+  <!-- The Band Members -->
+  <div class="container center">
+    <ul>
+      <p><%= members %></p>
+
+      <h3>Lineup</h3>
+      <% for (let i = 0; i < members.length; i++) { %>
+      <li>Band Member: <%= memberNames[i] %></li>
+      <% } %>
+    </ul>
+  </div>
+  <!-- The Band Member's Songs -->
+  <div class="song-list-conatiner">
+    <% for(var i=0; i < songs.length; i++) { %>
+    <div class="container card hoverable">
+      <ul class="collection s6">
+        <li class="collection-item avatar">
+          <img src="<%= songs[i].image%>" alt="" class="circle" />
+          <span class="title truncate"><%= songs[i].songName %></span>
+          <p class="truncate"><%= songs[i].artistName %></p>
+          <p class="truncate"><%= songs[i].note %></p>
+
+          <!-- If user created this song, display additonal content -->
+          <% if(songs[i].createdByGoogleId == user.googleId) { %>
+          <a
+            href="/songs/editSong/<%=songs[i]._id%>"
+            class="right secondary-content"
+            ><i class="material-icons">edit</i></a
+          >
+          <form
+            action="/songs/deleteSong/<%=songs[i]._id%>?_method=DELETE"
+            method="POST"
+          >
+            <input type="hidden" name="_method" value="DELETE" />
+            <button class="btn right" method="POST">
+              <i class="material-icons">delete</i>
+            </button>
+          </form>
+          <% } %>
+        </li>
+      </ul>
+    </div>
+    <% } %>
+  </div>
+</main>
+<%- include('partials/_footer.ejs') %>

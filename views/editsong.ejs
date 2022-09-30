@@ -4,7 +4,7 @@
   <div class="card">
     <form
       class="col s12"
-      action="/songs/sendEdit/<%=song[0]._id%>?_method=PUT"
+      action="/songs/sendEdit/<%=song._id%>?_method=PUT"
       method="POST"
     >
       <!-- Artist name -->
@@ -16,7 +16,7 @@
             id="artistName"
             name="artistName"
             class="validate"
-            value="<%= song[0].artistName %>"
+            value="<%= song.artistName %>"
           />
           <label for="artistName">Artist</label>
         </div>
@@ -29,7 +29,7 @@
             id="songName"
             name="songName"
             class="validate"
-            value="<%= song[0].songName %>"
+            value="<%= song.songName %>"
           />
           <label for="songName">Song Title</label>
         </div>
@@ -39,12 +39,7 @@
       <div class="row">
         <div class="input-field col s6">
           <i class="material-icons prefix">album</i>
-          <input
-            id="image"
-            name="image"
-            type="url"
-            value="<%= song[0].image %>"
-          />
+          <input id="image" name="image" type="url" value="<%= song.image %>" />
           <label for="image">Album Image URL</label>
         </div>
 
@@ -55,7 +50,7 @@
             id="videoLink"
             name="videoLink"
             type="url"
-            value="<%= song[0].videoLink %>"
+            value="<%= song.videoLink %>"
           />
           <label for="videoLink">YouTube Link URL</label>
         </div>
@@ -65,7 +60,7 @@
       <div class="input-field col s12">
         <i class="material-icons prefix">comment</i>
         <textarea id="note" name="note" class="materialize-textarea">
-<%= song[0].note %></textarea
+<%= song.note %></textarea
         >
         <label for="note">Notes</label>
       </div>
