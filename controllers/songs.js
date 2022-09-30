@@ -25,7 +25,7 @@ module.exports = {
     }
   },
   editSong: async (req, res) => {
-    const selectedSong = await Song.find({ _id: req.params.id });
+    const selectedSong = await Song.findOne({ _id: req.params.id });
     try {
       res.render("editsong.ejs", {
         title: "Edit Song",
@@ -38,7 +38,7 @@ module.exports = {
   },
   putSong: async (req, res) => {
     try {
-      //todo: validate input
+      // todo: validate input
       await Song.findOneAndUpdate(
         { _id: req.params.id },
         {

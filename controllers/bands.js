@@ -1,4 +1,3 @@
-const { isObjectIdOrHexString } = require("mongoose");
 const Band = require("../models/Band");
 const Song = require("../models/Song");
 const User = require("../models/User");
@@ -6,27 +5,14 @@ const User = require("../models/User");
 module.exports = {
   getBands: async (req, res) => {
     try {
-      // Get only bands where current user is a member
-      const myBands = await Band.find({ id: req.user._id });
-      console.log(`Test --> ${myBands} <--`);
-      console.log(`All band names: ${myBands.map((band) => band.bandName)}`);
-      // Get only members from bands above
-
-      const bands = await Band.find({ googleId: req.user.googleId });
-      const members = bands.filter((band) => {
-        band.bandMembers.includes(req.user.googleId);
-      });
-      const bandSongs = await Song.find({ googleId: members });
-      // console.log(`Band Members: ${members[0]}`);
-      // console.log(
-      //   `Band Songs: ${bandSongs.forEach((song) => {
-      //     song.songName;
-      //   })}`
-      // );
+      const myBands = (await Band.find()).filter((band) =>
+        band.bandMembers
+          .map((member) => member.googleId)
+          .includes(req.user.googleId)
+      );
       res.render("bands.ejs", {
         title: "Bands",
-        bands: bands,
-        songs: bandSongs,
+        bands: myBands,
         user: req.user,
       });
     } catch (err) {
@@ -35,19 +21,22 @@ module.exports = {
   },
   getBandInfo: async (req, res) => {
     try {
-      const band = await Band.findOne({ _id: req.param.id });
-      const members = band.filter((band) => {
-        band.bandMembers.includes(req.user.googleId);
-      }); // SINGLE BAND not getting all members
-      console.log(members.length);
-      console.log(band);
-      const bandSongs = await Song.find({ googleId: members });
+      const band = await Band.findOne({ _id: req.params.id });
+      const members = band.bandMembers.map((member) => member.googleId);
+      const allSongs = await Song.find({ createdByGoogleId: { $in: members } }); // Passing until members are found
+      const memberNames = (await User.find({ googleId: { $in: members } })).map(
+        (member) => {
+          return member.displayName;
+        }
+      );
+      console.log(memberNames);
       res.render("bandInfo.ejs", {
         title: band.bandName,
         band: band,
         members: members,
-        songs: bandSongs,
+        memberNames: memberNames,
         user: req.user,
+        songs: allSongs,
       });
     } catch (err) {
       console.error(err);
@@ -67,6 +56,44 @@ module.exports = {
       res.redirect("/bands");
     } catch (err) {
       console.log(err);
+    }
+  },
+  getEditBand: async (req, res) => {
+    const selectedBand = await Band.findOne({ _id: req.params.id });
+    try {
+      res.render("editband.ejs", {
+        title: "Edit Band",
+        band: selectedBand,
+        user: req.user,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  putBand: async (req, res) => {
+    try {
+      // todo: validate input
+      await Band.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          bandName: req.body.bandName,
+          logo: req.body.logo,
+          bandDesc: req.body.bandDesc,
+        }
+      );
+      console.log(`Band ${req.body.bandName} was updated.`);
+      res.redirect("/bands");
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  deleteBand: async (req, res) => {
+    try {
+      await Band.remove({ _id: req.params.id });
+      console.log(`Band deleted.`);
+      res.redirect("/bands");
+    } catch (err) {
+      console.error(err);
     }
   },
 };

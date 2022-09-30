@@ -1,0 +1,55 @@
+<%- include('partials/_header.ejs') %>
+<%- include('partials/_navbar.ejs') %>
+<!-- Edit song form -->
+<div class="row">
+  <div class="card">
+    <form class="col s12" action="/bands/sendEdit/<%=band._id%>?_method=PUT" method="POST">
+      <!-- Band name -->
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input
+            value="<%= band.bandName %>"
+            type="text"
+            id="bandName"
+            name="bandName"
+            class="validate"
+          />
+          <label for="bandName">Band Name</label>
+        </div>
+
+      <!-- Band logo URL -->
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">album</i>
+          <input value="<%= band.logo %>" id="logo" name="logo" type="url" />
+          <label for="logo">Band logo URL</label>
+        </div>
+
+      <!-- bandDesc -->
+      <div class="input-field col s12">
+        <i class="material-icons prefix">comment</i>
+        <textarea
+          id="bandDesc"
+          name="bandDesc"
+          class="materialize-textarea"
+        ><%= band.bandDesc %></textarea>
+        <label for="bandDesc">About</label>
+      </div>
+
+      <!-- Submit button -->
+      <div class="row">
+        <button
+          class="btn waves-effect waves-light"
+          type="submit"
+          name="action"
+        >
+          Re-Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/_footer.ejs') %>
