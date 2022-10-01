@@ -8,32 +8,80 @@
       <h2>About us</h2>
       <p><%= band.bandDesc %></p>
     </div>
-    <div class="container">
-      <% if(band.createdByGoogleId == user.googleId) { %>
-      <a href="/bands/editBand/<%=band._id%>" class="right secondary-content"
-        ><i class="material-icons">edit</i></a
-      >
-      <form
-        action="/bands/deleteBand/<%=band._id%>?_method=DELETE"
-        method="POST"
-      >
-        <input type="hidden" name="_method" value="DELETE" />
-        <button class="btn right" method="POST">
-          <i class="material-icons">delete</i>
-        </button>
-      </form>
-      <% } %>
-    </div>
   </div>
   <!-- The Band Members -->
   <div class="container center">
     <ul>
-      <p><%= members %></p>
+      <div class="container">
+        <h3>Lineup</h3>
+        <!-- Modal button -->
+        <a
+          class="waves-effect waves-light btn-floating modal-trigger"
+          href="#addMember"
+          ><i class="material-icons">add</i></a
+        >
+        <!-- Start of modal -->
+        <div id="addMember" class="modal">
+          <div class="modal-content">
+            <h2>Add Band Member</h2>
+            <div class="row">
+              <div class="card">
+                <form class="col s12" action="/bands/addMember/<%=band._id%>?_method=PUT" method="POST">
+                  <!-- googleId -->
+                  <div class="row">
+                    <p>Please insert the GoogleID of the person you wish to join the band.</p>
+                    <div class="input-field col s6">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input
+                        type="text"
+                        id="googleId"
+                        name="googleId"
+                        class="validate"
+                      />
+                      <label for="googleId">Goolge ID</label>
+                    </div>        
+                  <!-- Submit button -->
+                  <div class="row">
+                    <button
+                      class="btn waves-effect waves-light"
+                      type="submit"
+                      name="action"
+                    >
+                      Submit
+                      <i class="material-icons right">send</i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+              >Close</a
+            >
+          </div>
+        </div>
+        <!-- End of modal -->
+      </div>
 
-      <h3>Lineup</h3>
-      <% for (let i = 0; i < members.length; i++) { %>
-      <li>Band Member: <%= memberNames[i] %></li>
-      <% } %>
+      <div class="container">
+        <% for (let i = 0; i < members.length; i++) { %>
+        <li>
+          Band Member: <%= memberNames[i] %> <% if(band.createdByGoogleId ==
+          user.googleId) { %>
+          <form
+            action="/bands/deleteMember/?id=<%=band._id%>/?member=<%=members[i]%>?_method=DELETE"
+            method="POST"
+          >
+            <input type="hidden" name="_method" value="DELETE" />
+            <button class="btn right" method="POST">
+              <i class="material-icons">delete</i>
+            </button>
+          </form>
+          <% } %>
+        </li>
+        <% } %>
+      </div>
     </ul>
   </div>
   <!-- The Band Member's Songs -->

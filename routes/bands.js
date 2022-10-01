@@ -15,13 +15,17 @@ router.get("/:id", ensureAuth, bandsController.getBandInfo);
 //  @route  GET /bands/editBand/:id
 router.get("/editBand/:id", ensureAuth, bandsController.getEditBand);
 
+//  @desc   Create a band process for the database
+//  @route  POST /bands/addBand
+router.post("/addBand", ensureAuth, bandsController.addBand);
+
 //  @desc   Validate and update data with the database
 //  @route  PUT /bands/sendEdit/:id/
 router.put("/sendEdit/:id", ensureAuth, bandsController.putBand);
 
-//  @desc   Create a band process for the database
-//  @route  POST /bands/addBand
-router.post("/addBand", ensureAuth, bandsController.addBand);
+//  @desc   Add member to the band
+//  @route  PUT /bands/addMember/:id
+router.put("/addMember/:id", ensureAuth, bandsController.putBandMember);
 
 //  @desc   Delete a single band
 //  @route  DELETE /bands/deleteBand/:id
