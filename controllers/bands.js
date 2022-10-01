@@ -132,7 +132,10 @@ module.exports = {
   },
   deleteBandMember: async (req, res) => {
     try {
-      await Band.remove({ _id: req.params.id, bandMembers: req.params.member });
+      await Band.updateOne(
+        { _id: req.params.id, bandMembers.googleId: req.params.id },
+        { $pull: { googleId: req.params.id} }
+      );
     } catch (err) {
       console.error(err);
     }
