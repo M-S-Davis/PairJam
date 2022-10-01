@@ -23,7 +23,9 @@ module.exports = {
     try {
       const band = await Band.findOne({ _id: req.params.id });
       const members = band.bandMembers.map((member) => member.googleId);
-      const allSongs = await Song.find({ createdByGoogleId: { $in: members } }); // Passing until members are found
+      const memberSongs = await Song.find({
+        createdByGoogleId: { $in: members },
+      });
       const memberNames = (await User.find({ googleId: { $in: members } })).map(
         (member) => {
           return member.displayName;
@@ -36,7 +38,7 @@ module.exports = {
         members: members,
         memberNames: memberNames,
         user: req.user,
-        songs: allSongs,
+        songs: memberSongs,
       });
     } catch (err) {
       console.error(err);
@@ -87,11 +89,53 @@ module.exports = {
       console.error(err);
     }
   },
+  putBandMember: async (req, res) => {
+    try {
+      const currentBand = await Band.findOne({ _id: req.params.id });
+      const newMember = req.body.googleId;
+      const currentMembers = currentBand.bandMembers.map(
+        (member) => member.googleId
+      );
+      // TEST LOG
+      console.log(
+        `Funzies: ${currentBand.bandMembers
+          .map((member) => member.googleId)
+          .join(" ")}`
+      );
+      console.log(currentMembers);
+      await Band.updateOne(
+        { _id: req.params.id },
+        { $push: { bandMembers: { googleId: newMember } } }
+      );
+      // TEST LOG
+      console.log(`Member ${req.body.googleId} added.`);
+      const reloadCurrentBand = await Band.findOne({ _id: req.params.id });
+      console.log(
+        `Realzies: ${reloadCurrentBand.bandMembers
+          .map((member) => member.googleId)
+          .join(" ")}`
+      );
+
+      res.redirect("/bands/" + req.params.id);
+    } catch (err) {
+      console.error(err);
+    }
+  },
   deleteBand: async (req, res) => {
     try {
       await Band.remove({ _id: req.params.id });
       console.log(`Band deleted.`);
       res.redirect("/bands");
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  deleteBandMember: async (req, res) => {
+    try {
+      await Band.updateOne(
+        { _id: req.params.id, bandMembers.googleId: req.params.id },
+        { $pull: { googleId: req.params.id} }
+      );
     } catch (err) {
       console.error(err);
     }
