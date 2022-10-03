@@ -1,132 +1,161 @@
-<%- include('partials/_header.ejs') %> <%- include('partials/_navbar.ejs') %>
+<%- include('partials/_header.ejs') %> 
+<%- include('partials/_navbar.ejs') %>
+<main>
+  <div class="container">
+    <!-- Modal Trigger -->
+    <a
+      class="waves-effect right waves-light btn-floating modal-trigger"
+      href="#addsong"
+      ><i class="material-icons">add</i></a
+    >
+    <!-- Add song popup -->
+    <div id="addsong" class="modal">
+      <div class="modal-content">
+        <!-- Add song form -->
+        <div class="row">
+          <div class="card">
+            <form class="col s12" action="/songs/addSong" method="POST">
+              <!-- Artist name -->
+              <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input
+                    type="text"
+                    id="artistName"
+                    name="artistName"
+                    class="validate"
+                  />
+                  <label for="artistName">Artist</label>
+                </div>
 
-<div class="container">
-  <!-- Modal Trigger -->
-  <a
-    class="waves-effect right waves-light btn-floating modal-trigger"
-    href="#addsong"
-    ><i class="material-icons">add</i></a
-  >
-  <!-- Add song popup -->
-  <div id="addsong" class="modal">
-    <div class="modal-content">
-      <!-- Add song form -->
-      <div class="row">
-        <div class="card">
-          <form class="col s12" action="/songs/addSong" method="POST">
-            <!-- Artist name -->
-            <div class="row">
-              <div class="input-field col s6">
-                <i class="material-icons prefix">account_circle</i>
-                <input
-                  type="text"
-                  id="artistName"
-                  name="artistName"
-                  class="validate"
-                />
-                <label for="artistName">Artist</label>
+                <!-- Song name -->
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">music_note</i>
+                  <input
+                    type="text"
+                    id="songName"
+                    name="songName"
+                    class="validate"
+                  />
+                  <label for="songName">Song Title</label>
+                </div>
               </div>
 
-              <!-- Song name -->
-              <div class="input-field col s6">
-                <i class="material-icons prefix">music_note</i>
-                <input
-                  type="text"
-                  id="songName"
-                  name="songName"
-                  class="validate"
-                />
-                <label for="songName">Song Title</label>
-              </div>
-            </div>
+              <!-- Album image URL -->
+              <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">album</i>
+                  <input id="image" name="image" type="url" />
+                  <label for="image">Album Image URL</label>
+                </div>
 
-            <!-- Album image URL -->
-            <div class="row">
-              <div class="input-field col s6">
-                <i class="material-icons prefix">album</i>
-                <input id="image" name="image" type="url" />
-                <label for="image">Album Image URL</label>
+                <!-- YouTube URL -->
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">video_library</i>
+                  <input id="videoLink" name="videoLink" type="url" />
+                  <label for="videoLink">YouTube Link URL</label>
+                </div>
               </div>
 
-              <!-- YouTube URL -->
-              <div class="input-field col s6">
-                <i class="material-icons prefix">video_library</i>
-                <input id="videoLink" name="videoLink" type="url" />
-                <label for="videoLink">YouTube Link URL</label>
+              <!-- Notes -->
+              <div class="input-field col s12">
+                <i class="material-icons prefix">comment</i>
+                <textarea
+                  id="note"
+                  name="note"
+                  class="materialize-textarea"
+                ></textarea>
+                <label for="note">Notes</label>
               </div>
-            </div>
 
-            <!-- Notes -->
-            <div class="input-field col s12">
-              <i class="material-icons prefix">comment</i>
-              <textarea
-                id="note"
-                name="note"
-                class="materialize-textarea"
-              ></textarea>
-              <label for="note">Notes</label>
-            </div>
-
-            <!-- Submit button -->
-            <div class="row">
-              <button
-                class="btn waves-effect waves-light"
-                type="submit"
-                name="action"
-              >
-                Submit
-                <i class="material-icons right">send</i>
-              </button>
-            </div>
-          </form>
+              <!-- Submit button -->
+              <div class="row">
+                <button
+                  class="btn waves-effect waves-light"
+                  type="submit"
+                  name="action"
+                >
+                  Submit
+                  <i class="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+          >Close</a
+        >
+      </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-        >Close</a
-      >
+
+    <!-- Display Title -->
+    <div class="col">
+      <% if (songs.length > 0) { %>
+      <h1 class="center">Song List</h1>
+      <% } else { %>
+      <h1>Add songs with the + button.</h1>
+      <% } %>
+    </div>
+
+    <!-- Song Card -->
+    <div class="song-list-container">
+      <div class="row">
+        <% for(var i=0; i < songs.length; i++) { %>
+        <div class="col s6 m4 l3">
+          <div class="card hoverable">
+            <div class="card-image">
+              <img
+                class="responsive-img activator"
+                alt=""
+                src="<%= songs[i].image %>"
+              />
+              <% console.log(songs[i].image) %>
+              <span class="card-title truncate"
+                ><%= songs[i].artistName %></span
+              >
+              <a
+                href="/songs/editSong/<%=songs[i]._id%>"
+                class="btn-floating halfway-fab waves-effect waves-light red"
+                ><i class="material-icons">edit</i></a
+              >
+              <form
+                action="/songs/deleteSong/<%=songs[i]._id%>?_method=DELETE"
+                method="POST"
+              >
+                <input type="hidden" name="_method" value="DELETE" />
+                <button
+                  class="btn-floating halfway-fab left waves-effect waves-light red"
+                  method="POST"
+                >
+                  <i class="material-icons">delete</i>
+                </button>
+              </form>
+            </div>
+            <div class="card-content activator">
+              <span class=""><%= songs[i].songName %></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title"
+                ><%=songs[i].songName%><i class="material-icons right"
+                  >close</i
+                ></span
+              >
+              <% if (songs[i].videoLink) { %>
+              <span>
+                <a href="<%= songs[i].videoLink %>" target="_blank"
+                  >Music Video</a
+                >
+              </span>
+              <% } %>
+              <p><%= songs[i].note %></p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
     </div>
   </div>
-
-  <!-- Display Songs -->
-  <% if (songs.length > 0) { %>
-  <h1 class="center">Song Lists</h1>
-  <% } else { %>
-  <h1>Add songs with the add button.</h1>
-  <% } %>
-
-  <div class="song-list-conatiner">
-    <% for(var i=0; i < songs.length; i++) { %>
-    <div class="container card hoverable">
-      <ul class="collection s6">
-        <li class="collection-item avatar">
-          <img src="<%= songs[i].image%>" alt="" class="circle" />
-          <span class="title truncate"><%= songs[i].songName %></span>
-          <p class="truncate"><%= songs[i].artistName %></p>
-          <p class="truncate"><%= songs[i].note %></p>
-
-          <!-- If user created this song, display additonal content -->
-          <% if(songs[i].createdByGoogleId == user.googleId) { %>
-          <a
-            href="/songs/editSong/<%=songs[i]._id%>"
-            class="right secondary-content"
-            ><i class="material-icons">edit</i></a
-          >
-          <form
-            action="/songs/deleteSong/<%=songs[i]._id%>?_method=DELETE"
-            method="POST"
-          >
-            <input type="hidden" name="_method" value="DELETE" />
-            <button class="btn right" method="POST">
-              <i class="material-icons">delete</i>
-            </button>
-          </form>
-          <% } %>
-        </li>
-      </ul>
-    </div>
-    <% } %>
-  </div>
-</div>
+</main>
 <%- include('partials/_footer.ejs') %>
