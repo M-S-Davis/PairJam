@@ -3,7 +3,9 @@ const Song = require("../models/Song");
 module.exports = {
   getSongs: async (req, res) => {
     try {
-      const songs = await Song.find().sort({ createdAt: "desc" });
+      const songs = await Song.find({
+        createdByGoogleId: req.user.googleId,
+      }).sort({ createdAt: "desc" });
       res.render("songs.ejs", { title: "Songs", songs: songs, user: req.user });
     } catch (err) {
       console.error(err);
@@ -15,7 +17,9 @@ module.exports = {
         createdByGoogleId: req.user.googleId,
         artistName: req.body.artistName,
         songName: req.body.songName,
-        image: req.body.image,
+        image:
+          req.body.image ||
+          "https://image.shutterstock.com/image-vector/vinil-record-glitter-yellow-color-600w-1386485138.jpg",
         videoLink: req.body.videoLink,
         note: req.body.note,
       });

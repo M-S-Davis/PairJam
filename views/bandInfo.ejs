@@ -70,7 +70,7 @@
           Band Member: <%= memberNames[i] %> <%= members[i] %> <% if(band.createdByGoogleId ==
           user.googleId) { %>
           <form
-            action="/bands/deleteMember/?id=<%=band._id%>?member=<%=members[i]%>?_method=DELETE"
+            action="/bands/deleteMember/?id=<%=band._id%>&member=<%=members[i]%>?_method=PUT"
             method="POST"
           >
             <input type="hidden" name="_method" value="DELETE" />

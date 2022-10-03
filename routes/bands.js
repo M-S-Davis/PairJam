@@ -31,4 +31,8 @@ router.put("/addMember/:id", ensureAuth, bandsController.putBandMember);
 //  @route  DELETE /bands/deleteBand/:id
 router.delete("/deleteBand/:id", ensureAuth, bandsController.deleteBand);
 
+//  @desc   Delete a single member from a band (does not delete the user)
+//  @route  DELETE /bands/deleteMember/?:id?:member
+router.put("/deleteMember/?:id/:member", bandsController.deleteBandMember);
+
 module.exports = router;

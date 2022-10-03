@@ -1,3 +1,8 @@
+body {
+    /* Background color for all pages */
+    background: rgb(255, 255, 224);
+}
+
 .login-container {
     width: 400px;
     margin-top: 50px;
