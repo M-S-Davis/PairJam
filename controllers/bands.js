@@ -132,13 +132,13 @@ module.exports = {
   },
   deleteBandMember: async (req, res) => {
     try {
+      console.log(req.query);
       console.log(req.params);
-      // Get the single band from the unique ID in the params,
-      // and delete the bandMember with the memberID in the params.
-      let memberId = req.params.memebr;
+
+      let memberId = req.params.member;
       await Band.updateOne(
         { _id: req.params.id },
-        { $pull: { googleId: { memberId } } }
+        { $pull: { bandMembers: { googleId: memberId } } }
       );
     } catch (err) {
       console.error(err);
