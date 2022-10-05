@@ -123,7 +123,7 @@ module.exports = {
   },
   deleteBand: async (req, res) => {
     try {
-      await Band.remove({ _id: req.params.id });
+      await Band.deleteOne({ _id: req.params.id });
       console.log(`Band deleted.`);
       res.redirect("/bands");
     } catch (err) {

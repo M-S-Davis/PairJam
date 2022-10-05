@@ -74,8 +74,8 @@
         </div>
         <div class="container">
           <% for (let i = 0; i < members.length; i++) { %>
-          <li>
-            Band Member: <%= memberNames[i] %> <%= members[i] %> <% if(band.createdByGoogleId ==
+          <li class="card flow-text">
+            Band Member: <%= memberNames[i] %>//<%= members[i] %> <% if(band.createdByGoogleId ==
             user.googleId) { %>
             <form
               action="/bands/deleteMember/<%=band._id%>/<%=members[i]%>?_method=DELETE"

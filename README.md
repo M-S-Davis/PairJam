@@ -21,6 +21,8 @@ Input your jams, and get paired with other musicians who know the same music. St
 
 # Packages/Dependencies used
 
+-ejs, express, method-override, mongoose, passport-google-oauth20
+
 # Post-MVP thoughts
 
 Getting selected songs to play from Youtube would be super cool. Pick a song, and hear it while you make notes or practice. Keep the collection together. Send a song to someone on the app to encourage each other to learn the same songs.

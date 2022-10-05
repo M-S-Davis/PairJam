@@ -16,3 +16,8 @@ body {
     padding: initial;
     font-family: inherit;
 }
+
+.add-background {
+    background-color: aquamarine;
+    background: aquamarine;
+}
