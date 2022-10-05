@@ -8,3 +8,16 @@ body {
     margin-top: 50px;
     text-align: center;
 }
+
+.pre-line {
+    font-size: inherit;
+    color: inherit;
+    border: initial;
+    padding: initial;
+    font-family: inherit;
+}
+
+.add-background {
+    background-color: aquamarine;
+    background: aquamarine;
+}

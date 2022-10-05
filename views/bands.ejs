@@ -15,8 +15,23 @@
   <h1 class="center">Bands you're in!</h1>
   <div class="band-list-conatiner">
     <% for (let i=0; i < bands.length; i++) { %>
-    <div class="container card hoverable">
-      <ul class="collection s6">
+    <!-- New band card -->
+    <div class="container s10 card hoverable add-background">
+      <ul class="collection">
+        <a href="/bands/<%= bands[i].id %>">
+        <li class="collection-item avatar ">
+          <img src="<%= bands[i].logo %>" alt="" class="circle"/>
+          <span class="title truncate center"><%= bands[i].bandName %></span>
+        </li></a>
+      </ul>
+    </div>
+    <!-- Old band card -->
+    <!-- Old band card -->
+    <!-- Old band card -->
+    <!-- Old band card -->
+    <!-- Old band card -->
+      <div class="container s10 card hoverable">
+      <ul class="collection">
         <a href="/bands/<%= bands[i].id %>">
         <li class="collection-item avatar">
           <img src="<%= bands[i].logo %>" alt="" class="circle" />

@@ -1,88 +1,98 @@
 <%- include('partials/_header.ejs') %> <%- include('partials/_navbar.ejs') %>
 <main>
   <!-- Band General Info -->
-  <h1 class="center">Welcome to <%= band.bandName %></h1>
+  <h1 class="center"><%= band.bandName %></h1>
   <div class="container">
-    <img class="responsive-img circle" src="<%=band.logo%>" alt="" />
-    <div class="card grey">
-      <h2>About us</h2>
-      <p><%= band.bandDesc %></p>
-    </div>
-  </div>
-  <!-- The Band Members -->
-  <div class="container center">
-    <ul>
-      <div class="container">
-        <h3>Lineup</h3>
-        <!-- Modal button -->
-        <a
-          class="waves-effect waves-light btn-floating modal-trigger"
-          href="#addMember"
-          ><i class="material-icons">add</i></a
-        >
-        <!-- Start of modal -->
-        <div id="addMember" class="modal">
-          <div class="modal-content">
-            <h2>Add Band Member</h2>
-            <div class="row">
-              <div class="card">
-                <form class="col s12" action="/bands/addMember/<%=band._id%>?_method=PUT" method="POST">
-                  <!-- googleId -->
-                  <div class="row">
-                    <p>Please insert the GoogleID of the person you wish to join the band.</p>
-                    <div class="input-field col s6">
-                      <i class="material-icons prefix">account_circle</i>
-                      <input
-                        type="text"
-                        id="googleId"
-                        name="googleId"
-                        class="validate"
-                      />
-                      <label for="googleId">Goolge ID</label>
-                    </div>        
-                  <!-- Submit button -->
-                  <div class="row">
-                    <button
-                      class="btn waves-effect waves-light"
-                      type="submit"
-                      name="action"
-                    >
-                      Submit
-                      <i class="material-icons right">send</i>
-                    </button>
-                  </div>
-                </form>
-              </div>
+    <div class="card row">
+      <div class="col s12 m4 center">
+        <h2>About us</h2>
+        <p><%= band.bandDesc %></p>
+      </div>
+      <div class="col s12 m4">
+        <img class="responsive-img circle" src="<%=band.logo%>" alt="" />
+      </div>
+    
+    <!-- The Band Members -->
+    <div class="col s12 m4">
+      <ul>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h3>Lineup</h3>
             </div>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
-              >Close</a
+          <!-- Modal button -->
+          <div class="col">
+            <a
+              class="waves-effect waves-light btn-floating modal-trigger"
+              href="#addMember"
+              ><i class="material-icons">add</i></a
             >
           </div>
         </div>
-        <!-- End of modal -->
-      </div>
-
-      <div class="container">
-        <% for (let i = 0; i < members.length; i++) { %>
-        <li>
-          Band Member: <%= memberNames[i] %> <%= members[i] %> <% if(band.createdByGoogleId ==
-          user.googleId) { %>
-          <form
-            action="/bands/deleteMember/?id=<%=band._id%>&member=<%=members[i]%>?_method=PUT"
-            method="POST"
-          >
-            <input type="hidden" name="_method" value="DELETE" />
-            <button class="btn right" method="POST">
-              <i class="material-icons">delete</i>
-            </button>
-          </form>
+          <!-- Start of modal -->
+          <div id="addMember" class="modal">
+            <div class="modal-content center">
+              <h2>Add Band Member</h2>
+              <div class="row">
+                <div class="card">
+                  <form class="col s12" action="/bands/addMember/<%=band._id%>?_method=PUT" method="POST">
+                    <!-- googleId -->
+                    <div class="row">
+                      <p>Please insert the GoogleID of the person you wish to join the band.</p>
+                      <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input
+                          type="text"
+                          id="googleId"
+                          name="googleId"
+                          class="validate"
+                        />
+                        <label for="googleId">Goolge ID</label>
+                      </div>        
+                    <!-- Submit button -->
+                    <div class="row">
+                      <button
+                        class="btn waves-effect waves-light"
+                        type="submit"
+                        name="action"
+                      >
+                        Submit
+                        <i class="material-icons right">send</i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+                >Close</a
+              >
+            </div>
+          </div>
+          <!-- End of modal -->
+        </div>
+        <div class="container">
+          <% for (let i = 0; i < members.length; i++) { %>
+          <li class="card flow-text">
+            Band Member: <%= memberNames[i] %>//<%= members[i] %> <% if(band.createdByGoogleId ==
+            user.googleId) { %>
+            <form
+              action="/bands/deleteMember/<%=band._id%>/<%=members[i]%>?_method=DELETE"
+              method="POST"
+            >
+              <input type="hidden" name="_method" value="DELETE" />
+              <button class="btn right" method="POST">
+                <i class="material-icons">delete</i>
+              </button>
+            </form>
+            <% } %>
+          </li>
           <% } %>
-        </li>
-        <% } %>
-      </div>
-    </ul>
+        </div>
+      </ul>
+    </div>
+  </div>
   </div>
   <!-- The Band Member's Songs -->
   <div class="song-list-conatiner">
