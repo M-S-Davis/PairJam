@@ -1,16 +1,56 @@
-<%- include('partials/_header.ejs') %> 
-<%- include('partials/_navbar.ejs') %>
+<%- include('partials/_header.ejs') %> <%- include('partials/_navbar.ejs') %>
 
-<main>
-  <h1 class="teal-text">
-    A dashing dashboard has appeared. You are shocked. Le gasp!
-  </h1>
-  <div class="container center">
-    <h3>Welcome,</h3>
-    <%- include('partials/_user_chip.ejs') %>
+<main class="waves waves-light">
+  <div class="container row">
+    <div class="pearjam-bg card col s4">
+      <p>Welcome to the fucking party. Let's get jamming!</p>
+    </div>
+    <div class="card pearjam-bg col s6 center">
+      <h3>Rock on, <%= user.displayName %></h3>
+      <img src="<%= user.image %>" alt="me" />
+      <!-- The song entry -->
+      <span>Most Recent</span>
+      <div class="col s6 m4 l3">
+        <div class="card hoverable">
+          <div class="card-image">
+            <img
+              class="responsive-img activator"
+              alt=""
+              src="<%= song.image %>"
+            />
+            <span class="card-title truncate"><%= song.artistName %></span>
+          </div>
+          <div class="card-content activator">
+            <span class=""><%= song.songName %></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title"
+              ><%=song.songName%><i class="material-icons right">close</i></span
+            >
+            <% if (song.videoLink) { %>
+            <span>
+              <a href="<%= song.videoLink %>" target="_blank">Music Video</a>
+            </span>
+            <% } %>
+            <pre class="pre-line flow-text"><%= song.note %></pre>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <p class="center">My GoogleID is: <%= user.googleId %></p>
+  <div class="container dashboard-links row center s8">
+    <a href="/bands">
+      <div class="col s6 m4 card">
+        <i class="fa-solid fa-users-between-lines"></i>
+      </br>
+        <span class="wildstyle">Bands</span>
+      </div>
+    </a>
+    <button class="btn-large waves-effect waves-yellow">
+      Check out Songs
+      <i class="material-icons">music_note</i>
+    </button>
+  </div>
 </main>
 
 <%- include('partials/_footer.ejs') %>

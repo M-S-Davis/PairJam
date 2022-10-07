@@ -1,6 +1,6 @@
 body {
     /* Background color for all pages */
-    background: rgb(255, 255, 224);
+    background: rgb(255, 255, 220);
 }
 
 .login-container {
@@ -9,15 +9,106 @@ body {
     text-align: center;
 }
 
-.pre-line {
+.pre-text {
     font-size: inherit;
-    color: inherit;
-    border: initial;
-    padding: initial;
     font-family: inherit;
+    word-wrap: normal;
 }
 
 .add-background {
     background-color: aquamarine;
     background: aquamarine;
+}
+
+/* ------------------------- */
+/* Custom properties */
+/* ------------------------- */
+:root {
+    /* Title font */
+    --ff-title: 'Peralta', cursive;
+    /* Paragraph font */
+    --ff-paragraph: 'Quicksand', sans-serif;
+
+    /* Colours */
+    --clr-light: #ffffff;
+    --clr-dark: rgb(0, 0, 0);
+    --clr-accent: #ffffd0;
+    --clr-primary: #ffff7e;
+    --clr-secondary: #cdff58;
+    --clr-tertiary: #ffc558;
+
+    /* Font Sizes */
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+
+    /* Font Weights */
+    --fw-reg: 400;
+    --fw-bold: 700;
+
+    /* Box Shadow */
+    --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.5),
+        0.125em 0.125em 0.25em rgba(0, 0, 0, 0.25);
+}
+
+/* ------------------------- */
+/* Typography */
+/* ------------------------- */
+
+h1,
+h2,
+h3,
+.wildstyle {
+    line-height: 1;
+    font-family: var(--ff-title);
+}
+
+h1 {
+    font-size: var(--fs-h1);
+}
+
+h2 {
+    font-size: var(--fs-h2);
+}
+
+h3 {
+    font-size: var(--fs-h3);
+}
+
+p {
+    font-family: var(--ff-paragraph);
+}
+
+strong {
+    font-weight: var(--fw-bold);
+}
+
+/* Resize fonts on smaller screens */
+@media (min-width: 800px) {
+    :root {
+        --fs-h1: 4.5rem;
+        --fs-h2: 3.75rem;
+        --fs-h3: 1.5rem;
+        --fs-body: 1.125rem;
+    }
+}
+
+/* ------------------------- */
+/* Header */
+/* ------------------------- */
+
+
+/* ------------------------- */
+/* General Styles */
+/* ------------------------- */
+
+html {
+    scroll-behavior: smooth;
+    /* You are welcome */
+}
+
+.pearjam-bg {
+    background-image: url("PairJam\public\assets\pear-svgrepo-com.svg");
+    background-color: var(--clr-secondary);
 }
