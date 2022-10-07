@@ -95,20 +95,24 @@ strong {
 }
 
 /* ------------------------- */
-/* Header */
+/* Header & Navbar */
 /* ------------------------- */
+.pear-logo {
+    max-width: 25%;
+    max-height: 80%;
+}
 
 /* ------------------------- */
 /* Dashboard Styles */
 /* ------------------------- */
-.dashboard-button {
-    border: double 2em var(--clr-tertiary);
-    padding: 2em;
-}
-
 .dashboard-links a {
     margin-left: auto;
     margin-right: auto;
+    padding: 2em;
+}
+
+.dashboard-button {
+    border: double 2em var(--clr-tertiary);
     padding: 2em;
 }
 
