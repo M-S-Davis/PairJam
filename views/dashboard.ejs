@@ -6,7 +6,7 @@
     <div class="card center bg-accent col s12 center valign-wrapper">
       <!-- The user entry -->
       <div class="col s12 m6">
-        <h3>Rock on, <%= user.displayName %></h3>
+        <h3><%= user.displayName %></h3>
         <img src="<%= user.image %>" alt="me" />
         <h3>Jams: <%= totalSongs %></h3>
         <h3>Bands: <%= totalBands %></h3>
@@ -14,7 +14,8 @@
       <!-- The song entry -->
       <div class="col s12 m6">
         <h3>Most Recent</h3>
-        <div class="hoverable">
+        <div class="card hoverable">
+          <a href="/songs">
           <div class="card-image">
             <img
               class="responsive-img activator"
@@ -23,6 +24,7 @@
             />
             <span class="card-title truncate"><%= song.songName %></span>
           </div>
+        </a>
         </div>
       </div>
     </div>
