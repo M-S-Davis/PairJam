@@ -98,6 +98,17 @@ strong {
 /* Header */
 /* ------------------------- */
 
+/* ------------------------- */
+/* Dashboard Styles */
+/* ------------------------- */
+.dashboard-info {
+    border: dotted 2px var(--clr-dark);
+}
+
+.dashboard-button {
+    border: double 2em var(--clr-tertiary);
+    padding: 2em;
+}
 
 /* ------------------------- */
 /* General Styles */
@@ -108,7 +119,9 @@ html {
     /* You are welcome */
 }
 
+/* For times the PearJam background would look good, we add this class */
 .pearjam-bg {
-    background-image: url("PairJam\public\assets\pear-svgrepo-com.svg");
+    /* background-image: url("PairJam\public\assets\pear-svgrepo-com.svg"); */
+    background-image: url("https://www.publicdomainpictures.net/pictures/420000/nahled/pears-fruit-wallpaper-pattern.jpg");
     background-color: var(--clr-secondary);
 }
