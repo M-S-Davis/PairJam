@@ -1,8 +1,12 @@
 const Song = require("../models/Song");
+const Band = require("../models/Band");
 
 module.exports = {
   getDashboard: async (req, res) => {
     try {
+      const totalBands = await Band.count({
+        createdByGoogleId: req.user.googleId,
+      });
       const totalSongs = await Song.count({
         createdByGoogleId: req.user.googleId,
       });
@@ -15,6 +19,7 @@ module.exports = {
         user: req.user,
         song: gettingTheNewShit,
         totalSongs: totalSongs,
+        totalBands: totalBands,
       });
     } catch (err) {
       console.error(err);

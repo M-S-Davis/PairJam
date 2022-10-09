@@ -1,7 +1,7 @@
 <%- include('partials/_header.ejs') %> 
 <%- include('partials/_navbar.ejs') %>
 
-<main class="waves waves-light">
+<main class="wave-effect waves-light">
   <div class="container row">
     <div class="dashboard-info pearjam-bg card col s4">
       <h3>Welcome to the fucking party. Let's get jamming!</h3>
@@ -14,6 +14,7 @@
         <h3>Rock on, <%= user.displayName %></h3>
         <img src="<%= user.image %>" alt="me" />
         <h3>Jams: <%= totalSongs %></h3>
+        <h3>Bands: <%= totalBands %></h3>
       </div>  
       <!-- The song entry -->
       <div class="col s6 m4 l3">
