@@ -2,15 +2,47 @@
 <%- include('partials/_navbar.ejs') %>
 
 <main>
-  <h1 class="teal-text">
-    A dashing dashboard has appeared. You are shocked. Le gasp!
-  </h1>
-  <div class="container center">
-    <h3>Welcome,</h3>
-    <%- include('partials/_user_chip.ejs') %>
+  <div class="container row">
+    <div class="card center bg-accent col s12 center valign-wrapper">
+      <!-- The user entry -->
+      <div class="col s12 m6">
+        <h3>Rock on, <%= user.displayName %></h3>
+        <img src="<%= user.image %>" alt="me" />
+        <h3>Jams: <%= totalSongs %></h3>
+        <h3>Bands: <%= totalBands %></h3>
+      </div>  
+      <!-- The song entry -->
+      <div class="col s12 m6">
+        <h3>Most Recent</h3>
+        <div class="hoverable">
+          <div class="card-image">
+            <img
+              class="responsive-img activator"
+              alt=""
+              src="<%= song.image %>"
+            />
+            <span class="card-title truncate"><%= song.songName %></span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <p class="center">My GoogleID is: <%= user.googleId %></p>
+  <div class="container dashboard-links row center s8">
+    <a href="/bands">
+      <div class="col s6 m4 card dashboard-button">
+        <i class="fa-solid fa-users-between-lines"></i>
+      </br>
+        <span class="wildstyle">Bands</span>
+      </div>
+    </a>
+    <a href="/bands">
+      <div class="col s6 m4 card dashboard-button">
+        <i class="material-icons">music_note</i>
+      </br>
+        <span class="wildstyle">Songs</span>
+      </div>
+    </a>
+  </div>
 </main>
 
 <%- include('partials/_footer.ejs') %>
