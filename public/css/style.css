@@ -101,12 +101,14 @@ strong {
 /* ------------------------- */
 /* Dashboard Styles */
 /* ------------------------- */
-.dashboard-info {
-    border: dotted 2px var(--clr-dark);
-}
-
 .dashboard-button {
     border: double 2em var(--clr-tertiary);
+    padding: 2em;
+}
+
+.dashboard-links a {
+    margin-left: auto;
+    margin-right: auto;
     padding: 2em;
 }
 
@@ -123,5 +125,9 @@ html {
 .pearjam-bg {
     /* background-image: url("PairJam\public\assets\pear-svgrepo-com.svg"); */
     background-image: url("https://www.publicdomainpictures.net/pictures/420000/nahled/pears-fruit-wallpaper-pattern.jpg");
+    background-color: var(--clr-secondary);
+}
+
+.bg-accent {
     background-color: var(--clr-secondary);
 }
