@@ -1,5 +1,7 @@
 # PairJam
 
+![image](https://user-images.githubusercontent.com/22334382/200141746-190ed365-518e-43b7-8a53-5c2a08ba9e15.png)
+
 Input your jams, and get paired with other musicians who know the same music. Start off rocking out to familiar songs. Create set lists. Make friends. PairJam!
 
 # Objectives
