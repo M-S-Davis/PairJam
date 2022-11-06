@@ -1,0 +1,23 @@
+<%- include('partials/_header.ejs') %> <%- include('partials/_navbar.ejs') %>
+<main>
+  <body>
+    <!-- Pulling in custom script for this page -->
+    <script defer src="/js/main.js"></script>
+    <!-- Pulling in custom style sheet for this page -->
+    <style type="text/css">
+      @import url(css/menu.css);
+    </style>
+    <div id="menu">
+      <div id="menu-items">
+        <a href="/dashboard" class="menu-item">Dashboard</a
+        ><a href="/bands" class="menu-item">Bands</a
+        ><a href="/songs" class="menu-item">Songs</a
+        ><a href="/logout" class="menu-item">Logout</a>
+      </div>
+      <div id="menu-background-pattern"></div>
+      <div id="menu-background-image"></div>
+    </div>
+  </body>
+</main>
+
+<%- include('partials/_footer.ejs') %>

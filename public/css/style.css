@@ -1,6 +1,7 @@
 body {
     /* Background color for all pages */
     background: rgb(255, 255, 220);
+    box-sizing: border-box;
 }
 
 .login-container {
@@ -95,28 +96,6 @@ strong {
 }
 
 /* ------------------------- */
-/* Header & Navbar */
-/* ------------------------- */
-.pear-logo {
-    max-width: 25%;
-    max-height: 80%;
-}
-
-/* ------------------------- */
-/* Dashboard Styles */
-/* ------------------------- */
-.dashboard-links a {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2em;
-}
-
-.dashboard-button {
-    border: double 2em var(--clr-tertiary);
-    padding: 2em;
-}
-
-/* ------------------------- */
 /* General Styles */
 /* ------------------------- */
 
@@ -134,4 +113,34 @@ html {
 
 .bg-accent {
     background-color: var(--clr-secondary);
+}
+
+/* ------------------------- */
+/* Header & Navbar */
+/* ------------------------- */
+.nav-wrapper {
+    white-space: nowrap;
+}
+
+.pear-logo {
+    max-width: 25%;
+    max-height: 80%;
+}
+
+/* ------------------------- */
+/* Dashboard Styles */
+/* ------------------------- */
+
+
+/* ------------------------- */
+/* Song Page Styles */
+/* ------------------------- */
+.card-image img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.song-note {
+    white-space: pre-wrap;
 }

@@ -1,0 +1,109 @@
+#menu {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+#menu-items {
+    margin-left: clamp(4rem, 20vw, 48rem);
+    line-height: 12rem;
+    position: relative;
+    z-index: 2;
+}
+
+#menu[data-active-index="0"]>#menu-background-pattern {
+    background-position: 0% 0%;
+}
+
+#menu[data-active-index="1"]>#menu-background-pattern {
+    background-position: 0% -50%;
+}
+
+#menu[data-active-index="2"]>#menu-background-pattern {
+    background-position: 0% -100%;
+}
+
+#menu[data-active-index="3"]>#menu-background-pattern {
+    background-position: 0% -150%;
+}
+
+#menu[data-active-index="0"]>#menu-background-image {
+    background-position: center 40%;
+}
+
+#menu[data-active-index="1"]>#menu-background-image {
+    background-position: center 50%;
+}
+
+#menu[data-active-index="2"]>#menu-background-image {
+    background-position: center 60%;
+}
+
+#menu[data-active-index="3"]>#menu-background-image {
+    background-position: center 70%;
+}
+
+#menu-background-pattern {
+    background-image: radial-gradient(blue);
+    background-position: 0% 0%;
+    background-size: 12vmin 12vmin;
+    height: 100vh;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    transition: opacity 1000ms ease,
+        background-size 1000ms ease,
+        background-position 1000ms ease;
+    width: 100vw;
+    z-index: 1;
+}
+
+#menu-background-image {
+    background-image: url(/assets/ethan-judd-yVKGWunM960-unsplash.jpg);
+    background-position: center 40%;
+    background-size: 110vmax;
+    object-fit: cover;
+    height: 100%;
+    left: 0px;
+    opacity: 0.25;
+    position: absolute;
+    top: 0px;
+    transition: opacity 1000ms ease,
+        background-size 1000ms ease,
+        background-position 1000ms ease;
+    width: 100%;
+    z-index: 0;
+}
+
+#menu-items:hover~#menu-background-pattern {
+    background-size: 11vmin 11vmin;
+    opacity: 0.5;
+}
+
+#menu-items:hover~#menu-background-image {
+    background-size: 100vmax;
+    opacity: 0.1;
+}
+
+#menu-items:hover>.menu-item {
+    opacity: 0.3;
+    color: transparent;
+    text-shadow: 0 0 8px #fff;
+}
+
+#menu-items:hover>.menu-item:hover {
+    opacity: 1;
+    color: var(--clr-primary)
+}
+
+.menu-item {
+    color: var(--clr-primary);
+    cursor: pointer;
+    display: block;
+    font-family: var(--ff-main);
+    font-size: clamp(3rem, 8vw, 8rem);
+    padding: clamp(0.25rem, 0.5vw, 1rem) 0rem;
+    text-decoration: none;
+    transition: opacity 400ms ease;
+}
