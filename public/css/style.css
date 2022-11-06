@@ -96,29 +96,6 @@ strong {
 }
 
 /* ------------------------- */
-/* Header & Navbar */
-/* ------------------------- */
-.pear-logo {
-    max-width: 25%;
-    max-height: 80%;
-}
-
-/* ------------------------- */
-/* Dashboard Styles */
-/* ------------------------- */
-.dashboard-links a {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2em;
-}
-
-.dashboard-button {
-    border: double 2em var(--clr-tertiary);
-
-    padding: 2em;
-}
-
-/* ------------------------- */
 /* General Styles */
 /* ------------------------- */
 
@@ -129,7 +106,6 @@ html {
 
 /* For times the PearJam background would look good, we add this class */
 .pearjam-bg {
-    /* background-image: url("PairJam\public\assets\pear-svgrepo-com.svg"); */
     background-image: url("https://www.publicdomainpictures.net/pictures/420000/nahled/pears-fruit-wallpaper-pattern.jpg");
     background-color: var(--clr-secondary);
 }
