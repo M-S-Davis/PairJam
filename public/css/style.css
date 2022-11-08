@@ -4,12 +4,6 @@ body {
     box-sizing: border-box;
 }
 
-.login-container {
-    width: 400px;
-    margin-top: 50px;
-    text-align: center;
-}
-
 .pre-text {
     font-size: inherit;
     font-family: inherit;
@@ -127,8 +121,20 @@ html {
 }
 
 /* ------------------------- */
-/* Dashboard Styles */
+/* Landing Page Styles */
 /* ------------------------- */
+
+.card {
+    padding: 2rem;
+    margin-top: 50px;
+}
+
+@media screen {}
+
+/* ------------------------- */
+/* Dashboard Page Styles */
+/* ------------------------- */
+
 
 
 /* ------------------------- */

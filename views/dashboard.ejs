@@ -2,10 +2,10 @@
 <%- include('partials/_navbar.ejs') %>
 
 <main>
-  <div class="container row">
-    <div class="card center bg-accent col s12 center valign-wrapper">
+  <div class="container center row">
+    <div class="card center lime lighten-4 col s12 m8 valign-wrapper">
       <!-- The user entry -->
-      <div class="col s12 m6">
+      <div class="col center s12 m6">
         <div class="row">
           <h3><%= user.displayName %></h3>
           <img src="<%= user.image %>" alt="me" />
@@ -14,12 +14,12 @@
         </div>
       <!-- The song entry -->
         <div class="row">
-          <h3>Most Recent</h3>
+          <h3>Most Recently Added Song</h3>
           <div class="card hoverable">
             <a href="/songs">
             <div class="card-image">
               <img
-                class="responsive-img activator"
+                class="responsive-img"
                 alt=""
                 src="<%= song.image %>"
               />
