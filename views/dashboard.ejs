@@ -1,49 +1,31 @@
-<%- include('partials/_header.ejs') %> 
-<%- include('partials/_navbar.ejs') %>
+<%- include('partials/_header.ejs') %> <%- include('partials/_navbar.ejs') %>
 
 <main>
-  <div class="container row">
-    <div class="card center bg-accent col s12 center valign-wrapper">
+  <div id="dashboard" class="container row">
+    <div id="dashboard-container" class="center card lime lighten-4 s8">
       <!-- The user entry -->
-      <div class="col s12 m6">
-        <h3><%= user.displayName %></h3>
-        <img src="<%= user.image %>" alt="me" />
-        <h3>Jams: <%= totalSongs %></h3>
-        <h3>Bands: <%= totalBands %></h3>
-      </div>  
+      <div id="dashboard-user-card" class="card s10 m6 hoverable">
+        <span class="card-title wildstyle"><%= user.displayName %></span>
+        <img class="responsive-img" src="<%= user.image %>" alt="me" />
+        <a href="/songs"><h3>Jams: <%= totalSongs %></h3></a>
+        <a href="/bands"><h3>Bands: <%= totalBands %></h3></a>
+      </div>
       <!-- The song entry -->
-      <div class="col s12 m6">
-        <h3>Most Recent</h3>
+
+      <!-- This feature will appear in a future version -->
+
+      <!-- <div class="card s10 m6 hoverable">
+        <h3 class="center">Most Recently Added Song</h3>
         <div class="card hoverable">
           <a href="/songs">
-          <div class="card-image">
-            <img
-              class="responsive-img activator"
-              alt=""
-              src="<%= song.image %>"
-            />
-            <span class="card-title truncate"><%= song.songName %></span>
-          </div>
-        </a>
+            <div class="card-image center">
+              <img class="responsive-img" alt="" src="<%= song.image %>" />
+              <span class="card-title truncate"><%= song.songName %></span>
+            </div>
+          </a>
         </div>
-      </div>
+      </div> -->
     </div>
-  </div>
-  <div class="container dashboard-links row center s8">
-    <a href="/bands">
-      <div class="col s6 m4 card dashboard-button">
-        <i class="fa-solid fa-users-between-lines"></i>
-      </br>
-        <span class="wildstyle">Bands</span>
-      </div>
-    </a>
-    <a href="/bands">
-      <div class="col s6 m4 card dashboard-button">
-        <i class="material-icons">music_note</i>
-      </br>
-        <span class="wildstyle">Songs</span>
-      </div>
-    </a>
   </div>
 </main>
 

@@ -10,6 +10,10 @@ router.get("/", ensureGuest, mainController.getLanding);
 
 //  @desc   Test route
 //  @route  GET /test
+router.get("/menu", mainController.getMenu);
+
+//  @desc   Test route
+//  @route  GET /test
 router.get("/test", mainController.getTest);
 
 module.exports = router;

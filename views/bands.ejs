@@ -1,6 +1,6 @@
 <%- include('partials/_header.ejs') %> 
 <%- include('partials/_navbar.ejs') %>
-<main>
+<main id="bands">
 <h1 class="center">Welcome to band camp!</h1>
 
 <!-- Modal Trigger -->
@@ -12,34 +12,22 @@
 
 <div class="container">
   <!-- Display Bands -->
-  <h1 class="center">Bands you're in!</h1>
-  <div class="band-list-conatiner">
+  <h3 class="center">Bands you're in!</h3>
+  <div class="band-list-conatiner center">
     <% for (let i=0; i < bands.length; i++) { %>
     <!-- New band card -->
-    <div class="container s10 card hoverable add-background">
+    <div class="container s10 card hoverable right-align add-background">
       <ul class="collection">
         <a href="/bands/<%= bands[i].id %>">
-        <li class="collection-item avatar ">
-          <img src="<%= bands[i].logo %>" alt="" class="circle"/>
-          <span class="title truncate center"><%= bands[i].bandName %></span>
-        </li></a>
-      </ul>
-    </div>
-    <!-- Old band card -->
-    <!-- Old band card -->
-    <!-- Old band card -->
-    <!-- Old band card -->
-    <!-- Old band card -->
-      <div class="container s10 card hoverable">
-      <ul class="collection">
-        <a href="/bands/<%= bands[i].id %>">
-        <li class="collection-item avatar">
-          <img src="<%= bands[i].logo %>" alt="" class="circle" />
-          <span class="title truncate"><%= bands[i].bandName %></span>
-          <p>Members: <%= bands[i].bandMembers.length %></p>
-          <!-- todo: add band member chips -->
-        </li>
-      </a>
+          <li class="collection-item">
+            <img src="<%= bands[i].logo %>" alt="" class="band-img responsive-img"/>
+          </li>
+          <li class="collection-item">
+            <span class="title truncate"><%= bands[i].bandName %></span>
+            <div class="divider"></div>
+            <p>Members: <%= bands[i].bandMembers.length %></p>
+          </li>
+        </a>
       </ul>
     </div>
     <% } %>

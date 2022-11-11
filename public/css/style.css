@@ -1,12 +1,5 @@
 body {
-    /* Background color for all pages */
-    background: rgb(255, 255, 220);
-}
-
-.login-container {
-    width: 400px;
-    margin-top: 50px;
-    text-align: center;
+    box-sizing: border-box;
 }
 
 .pre-text {
@@ -95,40 +88,19 @@ strong {
 }
 
 /* ------------------------- */
-/* Header & Navbar */
-/* ------------------------- */
-.pear-logo {
-    max-width: 25%;
-    max-height: 80%;
-}
-
-/* ------------------------- */
-/* Dashboard Styles */
-/* ------------------------- */
-.dashboard-links a {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2em;
-}
-
-.dashboard-button {
-    border: double 2em var(--clr-tertiary);
-
-    padding: 2em;
-}
-
-/* ------------------------- */
 /* General Styles */
 /* ------------------------- */
 
 html {
     scroll-behavior: smooth;
     /* You are welcome */
+
+    /* Background color for all pages */
+    background: rgb(255, 255, 220);
 }
 
 /* For times the PearJam background would look good, we add this class */
 .pearjam-bg {
-    /* background-image: url("PairJam\public\assets\pear-svgrepo-com.svg"); */
     background-image: url("https://www.publicdomainpictures.net/pictures/420000/nahled/pears-fruit-wallpaper-pattern.jpg");
     background-color: var(--clr-secondary);
 }
@@ -136,3 +108,107 @@ html {
 .bg-accent {
     background-color: var(--clr-secondary);
 }
+
+/* ------------------------- */
+/* Header & Navbar */
+/* ------------------------- */
+.nav-wrapper {
+    white-space: nowrap;
+}
+
+.pear-logo {
+    max-width: 25%;
+    max-height: 80%;
+}
+
+/* ------------------------- */
+/* Landing Page Styles */
+/* ------------------------- */
+
+#landing {
+    margin: 0;
+    background-image: url(../assets/ethan-judd-yVKGWunM960-unsplash.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+#landing .card {
+    margin-top: 0;
+    padding: 3em;
+    opacity: 0.7;
+}
+
+#landing .btn {
+    margin-top: 3em;
+}
+
+/* ------------------------- */
+/* Dashboard Page Styles */
+/* ------------------------- */
+
+#dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em;
+}
+
+#dashboard-container .card {
+    margin: 0 auto;
+    width: 75%;
+}
+
+#dashboard-container img {
+    margin: auto;
+}
+
+#dashboard-container a {
+    display: inline-block;
+    color: #000;
+}
+
+#dashboard-user-card {
+    display: flex;
+    flex-direction: column;
+}
+
+#dashboard-user-card span {
+    padding: 2em;
+}
+
+#dashboard-user-card a:hover {
+    transform: scale(1.3);
+    transition-duration: 400ms;
+}
+
+@media only screen and (min-width: 600px) {
+    #dashboard-container {
+        flex-direction: row;
+    }
+}
+
+/* ------------------------- */
+/* Song Page Styles */
+/* ------------------------- */
+.card-image img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.song-note {
+    white-space: pre-wrap;
+}
+
+/* ------------------------- */
+/* Band Page Styles */
+/* ------------------------- */
+
+#bands .band-img {
+    max-height: 50px;
+    align-items: left;
+}
+
+/* ------------------------- */
+/* Band Info Page Styles */
+/* ------------------------- */

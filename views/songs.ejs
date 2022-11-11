@@ -3,7 +3,7 @@
   <div class="container">
     <!-- Modal Trigger -->
     <a
-      class="waves-effect right waves-light btn-floating modal-trigger"
+      class="waves-effect right waves-light btn-floating modal-trigger orange darken-4"
       href="#addsong"
       ><i class="material-icons">add</i></a
     >
@@ -92,7 +92,7 @@
     <!-- Display Title -->
     <div class="col">
       <% if (songs.length > 0) { %>
-      <h1 class="center">Song List</h1>
+      <h1 class="center">Your Songs!</h1>
       <% } else { %>
       <h1>Add songs with the + button.</h1>
       <% } %>
@@ -116,7 +116,7 @@
               >
               <a
                 href="/songs/editSong/<%=songs[i]._id%>"
-                class="btn-floating halfway-fab waves-effect waves-light red"
+                class="btn-floating halfway-fab waves-effect waves-light light-green darken-4"
                 ><i class="material-icons">edit</i></a
               >
               <form
@@ -125,7 +125,7 @@
               >
                 <input type="hidden" name="_method" value="DELETE" />
                 <button
-                  class="btn-floating halfway-fab left waves-effect waves-light red"
+                  class="btn-floating halfway-fab left waves-effect waves-light light-green darken-4"
                   method="POST"
                 >
                   <i class="material-icons">delete</i>
@@ -133,7 +133,7 @@
               </form>
             </div>
             <div class="card-content activator">
-              <span class=""><%= songs[i].songName %></span>
+              <span class="truncate"><%= songs[i].songName %></span>
             </div>
             <div class="card-reveal">
               <span class="card-title"
@@ -148,7 +148,9 @@
                 >
               </span>
               <% } %>
-              <pre class="pre-text flow-text"><%= songs[i].note %></pre>
+              <pre class="pre-text song-note flow-text">
+<%= songs[i].note %></pre
+              >
             </div>
           </div>
         </div>

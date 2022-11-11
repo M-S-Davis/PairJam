@@ -1,26 +1,29 @@
-</body>
-  <!-- Compiled and minified JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script type="text/javascript" src="/js/action_btn.js"></script>
-  <script>
-    M.Sidenav.init(document.querySelector(".sidenav"))
+    <!-- Materialize Compiled and minified JavaScript -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    ></script>
+    <script type="text/javascript" src="/js/action_btn.js"></script>
     
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.materialboxed');
+    <!-- Materialize functions -->
+    <script>
+    M.Sidenav.init(document.querySelector(".sidenav"));
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll(".materialboxed");
       var instances = M.Materialbox.init(elems, {});
     });
 
     function toggleHide() {
-      let elems = documnet.querySelectorAll('.addsong');
-      elems.classList.toggle('hide');
+      let elems = documnet.querySelectorAll(".addsong");
+      elems.classList.toggle("hide");
     }
 
-
     // Adds modal functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.modal');
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll(".modal");
       var instances = M.Modal.init(elems, {});
     });
-  </script>
+    </script>
   </body>
 </html>
