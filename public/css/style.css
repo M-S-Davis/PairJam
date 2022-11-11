@@ -124,18 +124,36 @@ html {
 /* Landing Page Styles */
 /* ------------------------- */
 
-.card {
-    padding: 2rem;
-    margin-top: 50px;
+#landing {
+    margin: 0;
+    background-image: url(../assets/ethan-judd-yVKGWunM960-unsplash.jpg);
+    background-size: cover;
+    height: 100vh;
 }
 
-@media screen {}
+#landing .card {
+    margin-top: 0;
+    padding: 3em;
+    opacity: 0.7;
+}
+
+#landing .btn {
+    margin-top: 3em;
+}
 
 /* ------------------------- */
 /* Dashboard Page Styles */
 /* ------------------------- */
 
+#dashboard-main-card {
+    margin-top: 10vh;
+}
 
+@media only screen and (min-width: 600px) {
+    #dashboard-main-card {
+        /* display: flex; */
+    }
+}
 
 /* ------------------------- */
 /* Song Page Styles */
