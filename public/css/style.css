@@ -1,6 +1,4 @@
 body {
-    /* Background color for all pages */
-    background: rgb(255, 255, 220);
     box-sizing: border-box;
 }
 
@@ -96,6 +94,9 @@ strong {
 html {
     scroll-behavior: smooth;
     /* You are welcome */
+
+    /* Background color for all pages */
+    background: rgb(255, 255, 220);
 }
 
 /* For times the PearJam background would look good, we add this class */
@@ -145,13 +146,44 @@ html {
 /* Dashboard Page Styles */
 /* ------------------------- */
 
-#dashboard-main-card {
-    margin-top: 10vh;
+#dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em;
+}
+
+#dashboard-container .card {
+    margin: 0 auto;
+    width: 75%;
+}
+
+#dashboard-container img {
+    margin: auto;
+}
+
+#dashboard-container a {
+    display: inline-block;
+    color: #000;
+}
+
+#dashboard-user-card {
+    display: flex;
+    flex-direction: column;
+}
+
+#dashboard-user-card span {
+    padding: 2em;
+}
+
+#dashboard-user-card a:hover {
+    transform: scale(1.3);
+    transition-duration: 400ms;
 }
 
 @media only screen and (min-width: 600px) {
-    #dashboard-main-card {
-        /* display: flex; */
+    #dashboard-container {
+        flex-direction: row;
     }
 }
 
@@ -167,3 +199,16 @@ html {
 .song-note {
     white-space: pre-wrap;
 }
+
+/* ------------------------- */
+/* Band Page Styles */
+/* ------------------------- */
+
+#bands .band-img {
+    max-height: 50px;
+    align-items: left;
+}
+
+/* ------------------------- */
+/* Band Info Page Styles */
+/* ------------------------- */
