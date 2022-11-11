@@ -21,4 +21,4 @@ Input your jams, and get paired with other musicians who know the same music. St
 
 Pulling song data from a user while only having a band ID is a pain. BandID --> gets UserID --> gets SongID. I spent hours figuing out how to make this work and discovered many of Express's inner workings. Worth it!
 
-I kept with a MVC architecture from day one, and grew a huge appreciation for howe scalable, maintainable, and easy to exapand it was. I love me some organization!
+I kept with a MVC architecture from day one, and grew a huge appreciation for how scalable, maintainable, and easy to exapand it was. I love me some organization!
